@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed, reactive, ref, useTemplateRef } from "vue";
-import { useI18n } from "vue-i18n";
+import { computed, reactive, useTemplateRef } from "vue";
 
-const { t } = useI18n();
 const otherDialog = useTemplateRef<HTMLDialogElement>("otherDialog");
 const damageDialog = useTemplateRef<HTMLDialogElement>("damageDialog");
 
