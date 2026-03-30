@@ -30,15 +30,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="4"
-     inkscape:cx="220.375"
-     inkscape:cy="44.125"
+     inkscape:zoom="2"
+     inkscape:cx="845.75"
+     inkscape:cy="154.75"
      inkscape:window-width="1920"
      inkscape:window-height="1048"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g113" />
+     inkscape:current-layer="g37" />
   <defs
      id="defs1" />
   <g
@@ -93,7 +93,7 @@
     </g>
     <g
        id="g36"
-       inkscape:label="rsh2">
+       inkscape:label="rsh20">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect153"
@@ -126,7 +126,7 @@
     </g>
     <g
        id="g35"
-       inkscape:label="bld2">
+       inkscape:label="bld20">
       <rect
          style="fill:#e84f43;fill-opacity:1;stroke-width:0.999999"
          id="rect152"
@@ -158,7 +158,7 @@
     </g>
     <g
        id="g34"
-       inkscape:label="dcy1">
+       inkscape:label="dcy10">
       <rect
          style="fill:#439471;fill-opacity:1;stroke-width:0.999999"
          id="rect149"
@@ -208,7 +208,7 @@
     </g>
     <g
        id="g33"
-       inkscape:label="shl1">
+       inkscape:label="shl10">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect147"
@@ -236,7 +236,7 @@
     </g>
     <g
        id="g32"
-       inkscape:label="crs1">
+       inkscape:label="crs10">
       <rect
          style="fill:#429455;fill-opacity:1;stroke-width:0.999999"
          id="rect139"
@@ -266,7 +266,7 @@
     </g>
     <g
        id="g30"
-       inkscape:label="bls2">
+       inkscape:label="bls20">
       <rect
          style="fill:#828942;fill-opacity:1;stroke-width:0.999999"
          id="rect126"
@@ -316,7 +316,7 @@
     </g>
     <g
        id="g31"
-       inkscape:label="bls1">
+       inkscape:label="bls10">
       <rect
          style="fill:#828942;fill-opacity:1;stroke-width:0.999999"
          id="rect125"
@@ -368,7 +368,7 @@
     </g>
     <g
        id="g29"
-       inkscape:label="psn2">
+       inkscape:label="psn20">
       <rect
          style="fill:#609043;fill-opacity:1;stroke-width:0.999999"
          id="rect86"
@@ -412,7 +412,7 @@
     </g>
     <g
        id="g28"
-       inkscape:label="psn1">
+       inkscape:label="psn10">
       <rect
          style="fill:#609043;fill-opacity:1;stroke-width:0.999999"
          id="rect85"
@@ -456,7 +456,7 @@
     </g>
     <g
        id="g26"
-       inkscape:label="hea2">
+       inkscape:label="hea20">
       <rect
          style="fill:#4778b9;fill-opacity:1;stroke-width:0.999999"
          id="rect46"
@@ -489,7 +489,7 @@
     </g>
     <g
        id="g27"
-       inkscape:label="hea1">
+       inkscape:label="hea10">
       <rect
          style="fill:#4778b9;fill-opacity:1;stroke-width:0.999999"
          id="rect45"
@@ -763,7 +763,7 @@
     </g>
     <g
        id="g14"
-       inkscape:label="atk5">
+       inkscape:label="atk50">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect96"
@@ -806,7 +806,7 @@
     </g>
     <g
        id="g15"
-       inkscape:label="atk4">
+       inkscape:label="atk40">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect97"
@@ -848,7 +848,7 @@
     </g>
     <g
        id="g13"
-       inkscape:label="atk3">
+       inkscape:label="atk30">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect98"
@@ -890,7 +890,7 @@
     </g>
     <g
        id="g12"
-       inkscape:label="atk2">
+       inkscape:label="atk20">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect99"
@@ -932,7 +932,7 @@
     </g>
     <g
        id="g11"
-       inkscape:label="atk1">
+       inkscape:label="atk10">
       <rect
          style="fill:#a07e42;fill-opacity:1;stroke-width:0.999999"
          id="rect95"
@@ -974,7 +974,7 @@
     </g>
     <g
        id="g6"
-       inkscape:label="lif5">
+       inkscape:label="lif50">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect12"
@@ -1019,7 +1019,7 @@
     </g>
     <g
        id="g7"
-       inkscape:label="lif4">
+       inkscape:label="lif40">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect14"
@@ -1063,7 +1063,7 @@
     </g>
     <g
        id="g8"
-       inkscape:label="lif3">
+       inkscape:label="lif30">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect16"
@@ -1107,7 +1107,7 @@
     </g>
     <g
        id="g9"
-       inkscape:label="lif2">
+       inkscape:label="lif20">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect18"
@@ -1151,7 +1151,7 @@
     </g>
     <g
        id="g10"
-       inkscape:label="lif1">
+       inkscape:label="lif10">
       <rect
          style="fill:#4b8baf;fill-opacity:1;stroke-width:0.999999"
          id="rect10"
@@ -1195,7 +1195,7 @@
     </g>
     <g
        id="g5"
-       inkscape:label="dmg5">
+       inkscape:label="dmg50">
       <rect
          style="fill:#e84d4d;fill-opacity:1;stroke-width:0.999999"
          id="rect1"
@@ -1232,7 +1232,7 @@
     </g>
     <g
        id="g4"
-       inkscape:label="dmg4">
+       inkscape:label="dmg40">
       <rect
          style="fill:#e84d4d;fill-opacity:1;stroke-width:0.999999"
          id="rect3"
@@ -1268,7 +1268,7 @@
     </g>
     <g
        id="g3"
-       inkscape:label="dmg3">
+       inkscape:label="dmg30">
       <rect
          style="fill:#e84d4d;fill-opacity:1;stroke-width:0.999999"
          id="rect6"
@@ -1304,7 +1304,7 @@
     </g>
     <g
        id="g2"
-       inkscape:label="dmg2">
+       inkscape:label="dmg20">
       <rect
          style="fill:#e84d4d;fill-opacity:1;stroke-width:0.999999"
          id="rect8"
@@ -1340,7 +1340,7 @@
     </g>
     <g
        id="g1"
-       inkscape:label="dmg1">
+       inkscape:label="dmg10">
       <rect
          style="fill:#e84d4d;fill-opacity:1;stroke-width:0.999999"
          id="rect4"
