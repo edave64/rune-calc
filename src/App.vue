@@ -39,7 +39,7 @@ function nextTurn() {
 		flex-direction: column;
 	}
 	.app > * {
-		width: 100%;
+		width: calc(100vw - 64px);
 	}
 }
 

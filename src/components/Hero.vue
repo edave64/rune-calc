@@ -381,13 +381,12 @@ button {
 	flex-wrap: wrap;
 
 	::v-deep(.marker) {
-		width: 1.5em;
 		vertical-align: middle;
 	}
 }
 
 ::v-deep(.marker) {
-	width: 32px;
+	width: 1.5em;
 }
 
 .btn-group {
@@ -396,11 +395,13 @@ button {
 
 	& h2 {
 		margin: 0;
+		flex-grow: 2;
+		text-align: right;
 	}
 
 	& button {
-		flex-grow: 1;
-		flex-shrink: 1;
+		flex-grow: 0;
+		flex-shrink: 0;
 		border-radius: 0;
 		padding: 4px;
 
