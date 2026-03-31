@@ -5,28 +5,33 @@
         "reset": "Zurücksetzen",
         "close": "Schließen",
         "undo": "Rückgängig",
-        "addDamage": "Schaden hinzufügen",
+        "addDamage": "Schaden",
         "addMarker": "Marker hinzufügen"
     },
+    "heroes": {
+        "hero1": "Linker Held",
+        "hero2": "Rechter Held"
+    },
     "markers": {
-        "damageMarkers": "Schaden Marker",
-        "lifeMarkers": "Leben Marker",
-        "strengthMarkers": "Stärke Marker",
-        "counterMarkers": "Zähler Marker",
-        "sleepMarkers": "Schlaf Marker",
-        "poisonMarkers": "Gift Marker",
-        "healingMarkers": "Heilung Marker",
-        "blessingMarkers": "Segnung Marker",
-        "curseMarkers": "Fluch Marker",
-        "protectionMarkers": "Schutz Marker",
-        "bleedingMarkers": "Blutung Marker",
-        "decayMarkers": "Verwesung Marker",
-        "rushMarkers": "Rausch Marker",
-        "confusionMarkers": "Wirr Marker"
+        "damageMarkers": "Schaden",
+        "lifeMarkers": "Leben",
+        "strengthMarkers": "Stärke",
+        "counterMarkers": "Zähler",
+        "sleepMarkers": "Schlaf",
+        "poisonMarkers": "Gift",
+        "healingMarkers": "Heilung",
+        "blessingMarkers": "Segnung",
+        "curseMarkers": "Fluch",
+        "protectionMarkers": "Schutz",
+        "bleedingMarkers": "Blutung",
+        "decayMarkers": "Verwesung",
+        "rushMarkers": "Rausch",
+        "confusionMarkers": "Wirr"
     },
     "strings": {
-        "healDamage": "Schaden Heilen",
+        "healDamage": "Heilen",
         "totalHealthChange": "Gesundheitsänderung",
-        "totalAttackChange": "Angriffsänderung"
+        "totalAttackChange": "Angriffsänderung",
+        "otherMarkers": "Andere Marker"
     }
 }

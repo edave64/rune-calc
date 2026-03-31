@@ -5,28 +5,33 @@
         "reset": "Reset",
         "close": "Close",
         "undo": "Undo",
-        "addDamage": "Add Damage",
+        "addDamage": "Damage",
         "addMarker": "Add Marker"
     },
+    "heroes": {
+        "hero1": "Left Hero",
+        "hero2": "Right Hero"
+    },
     "markers": {
-        "damageMarkers": "Damage Markers",
-        "lifeMarkers": "Life Markers",
-        "strengthMarkers": "Strength Markers",
-        "counterMarkers": "Counter Markers",
-        "sleepMarkers": "Sleep Markers",
-        "poisonMarkers": "Poison Markers",
-        "healingMarkers": "Healing Markers",
-        "blessingMarkers": "Blessing Markers",
-        "curseMarkers": "Curse Markers",
-        "protectionMarkers": "Protection Markers",
-        "bleedingMarkers": "Bleeding Markers",
-        "decayMarkers": "Decay Markers",
-        "rushMarkers": "Rush Markers",
-        "confusionMarkers": "Confusion Markers"
+        "damageMarkers": "Damage",
+        "lifeMarkers": "Life",
+        "strengthMarkers": "Strength",
+        "counterMarkers": "Counter",
+        "sleepMarkers": "Sleep",
+        "poisonMarkers": "Poison",
+        "healingMarkers": "Healing",
+        "blessingMarkers": "Blessing",
+        "curseMarkers": "Curse",
+        "protectionMarkers": "Protection",
+        "bleedingMarkers": "Bleeding",
+        "decayMarkers": "Decay",
+        "rushMarkers": "Rush",
+        "confusionMarkers": "Confusion"
     },
     "strings": {
-        "healDamage": "Heal Damage",
+        "healDamage": "Heal",
         "totalHealthChange": "Health Change",
-        "totalAttackChange": "Attack Change"
+        "totalAttackChange": "Attack Change",
+        "otherMarkers": "Other Markers"
     }
 }

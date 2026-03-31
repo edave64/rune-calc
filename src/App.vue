@@ -14,9 +14,9 @@ function nextTurn() {
 
 <template>
 	<div class="app">
-		<Hero ref="hero1" />
-		<Hero ref="hero2" />
-		<div>
+		<Hero class="hero" ref="hero1" :title="$t('heroes.hero1')" />
+		<Hero class="hero" ref="hero2" :title="$t('heroes.hero2')" />
+		<div id="controls">
 			<button @click="nextTurn">{{ $t("action.nextTurn") }}</button>
 		</div>
 	</div>
@@ -24,8 +24,26 @@ function nextTurn() {
 
 <style scoped>
 .app {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+}
+
+.app > * {
+	width: calc((100vw - 128px) / 2);
+	max-width: 360px;
+}
+
+@media (max-width: 1008px) {
+	.app {
+		flex-direction: column;
+	}
+	.app > * {
+		width: 100%;
+	}
+}
+
+#controls {
+	width: 128px;
 }
 </style>

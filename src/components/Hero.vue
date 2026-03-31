@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, reactive, useTemplateRef } from "vue";
+import { useI18n } from "vue-i18n";
 
 const otherDialog = useTemplateRef<HTMLDialogElement>("otherDialog");
 const damageDialog = useTemplateRef<HTMLDialogElement>("damageDialog");
@@ -143,6 +144,106 @@ function applyTurn() {
 	}
 }
 
+const markerImages: Record<Markers, { base: string; denominations: number[] }> = {
+	damage: {
+		base: "dmg",
+		denominations: [10, 20, 30, 40, 50],
+	},
+	life: {
+		base: "lif",
+		denominations: [10, 20, 30, 40, 50],
+	},
+	strength: {
+		base: "atk",
+		denominations: [10, 20, 30, 40, 50],
+	},
+	counter: {
+		base: "cnt",
+		denominations: [1, 2, 3, 4, 5],
+	},
+	sleep: {
+		base: "slp",
+		denominations: [1, 2, 3, 4, 5],
+	},
+	poison: {
+		base: "psn",
+		denominations: [10, 20],
+	},
+	healing: {
+		base: "hea",
+		denominations: [10, 20],
+	},
+	blessing: {
+		base: "bls",
+		denominations: [10, 20],
+	},
+	curse: {
+		base: "crs",
+		denominations: [10],
+	},
+	protection: {
+		base: "shl",
+		denominations: [10],
+	},
+	bleeding: {
+		base: "bld",
+		denominations: [20],
+	},
+	decay: {
+		base: "dcy",
+		denominations: [10],
+	},
+	rush: {
+		base: "rsh",
+		denominations: [20],
+	},
+	confusion: {
+		base: "cfs",
+		denominations: [1],
+	}
+};
+
+const { t } = useI18n();
+
+function renderMarkers(marker: Markers): string {
+	const { base, denominations } = markerImages[marker];
+	const max_denomination = Math.max(...denominations);
+
+	const max_vals = Math.floor(markers[marker] / max_denomination);
+	const remainder = markers[marker] % max_denomination;
+	const tStr = t('markers.' + marker + "Markers");
+
+	let ret = "";
+
+	for (let i = 0; i < max_vals; i++) {
+		addImage(max_denomination);
+	}
+
+	if (remainder === 0) return ret;
+
+	addImage(remainder);
+
+	return ret;
+
+	function addImage(value: number) {
+		ret += `<img class="marker" src="./markers/${base}${value}.svg" alt="${value} ${tStr}" title="${value} ${tStr}">`;
+	}
+}
+
+function renderMarker(marker: Markers, value: number) {
+	const { base } = markerImages[marker];
+	const tStr = t('markers.' + marker + "Markers");
+
+	return `<img class="marker" src="./markers/${base}${value}.svg" alt="${value} ${tStr}" title="${value} ${tStr}">`;
+}
+
+defineProps({
+	title: {
+		type: String,
+		required: true,
+	},
+});
+
 defineExpose({
 	addMarker,
 	canAddMarker,
@@ -152,39 +253,23 @@ defineExpose({
 
 <template>
 	<div class="hero">
+		<h2>{{ title }}</h2>
 		<ul>
 			<li>
 				{{ $t("strings.totalHealthChange") }}: {{ totalHealthDelta }}
-				<ul>
-					<li v-if="markers.life">{{ $t("markers.lifeMarkers") }} {{ markers.life }}</li>
-					<li v-if="markers.damage">{{ $t("markers.damageMarkers") }} {{ markers.damage }}</li>
-				</ul>
+				<div class="marker-list" v-html="renderMarkers('damage') + renderMarkers('life')" />
 			</li>
 			<li>
 				{{ $t("strings.totalAttackChange") }}: {{ totalAttackDelta }}
-				<ul>
-					<li v-if="markers.confusion">
-						{{ $t("markers.confusionMarkers") }} {{ markers.confusion }}
-					</li>
-					<li v-if="markers.strength">
-						{{ $t("markers.strengthMarkers") }} {{ markers.strength }}
-					</li>
-					<li v-if="markers.blessing">
-						{{ $t("markers.blessingMarkers") }} {{ markers.blessing }}
-					</li>
-					<li v-if="markers.curse">{{ $t("markers.curseMarkers") }} {{ markers.curse }}</li>
-					<li v-if="markers.rush">{{ $t("markers.rushMarkers") }} {{ markers.rush }}</li>
-				</ul>
+				<div class="marker-list"
+					v-html="renderMarkers('confusion') + renderMarkers('strength') + renderMarkers('blessing') + renderMarkers('curse') + renderMarkers('rush')" />
 			</li>
-			<li v-if="markers.counter">{{ $t("markers.counterMarkers") }}: {{ markers.counter }}</li>
-			<li v-if="markers.sleep">{{ $t("markers.sleepMarkers") }}: {{ markers.sleep }}</li>
-			<li v-if="markers.poison">{{ $t("markers.poisonMarkers") }}: {{ markers.poison }}</li>
-			<li v-if="markers.healing">{{ $t("markers.healingMarkers") }}: {{ markers.healing }}</li>
-			<li v-if="markers.protection">
-				{{ $t("markers.protectionMarkers") }}: {{ markers.protection }}
+			<li
+				v-if="markers.counter + markers.sleep + markers.poison + markers.healing + markers.protection + markers.bleeding + markers.decay">
+				{{ $t("strings.otherMarkers") }}
+				<div class="marker-list"
+					v-html="renderMarkers('counter') + renderMarkers('sleep') + renderMarkers('poison') + renderMarkers('healing') + renderMarkers('protection') + renderMarkers('bleeding') + renderMarkers('decay')" />
 			</li>
-			<li v-if="markers.bleeding">{{ $t("markers.bleedingMarkers") }}: {{ markers.bleeding }}</li>
-			<li v-if="markers.decay">{{ $t("markers.decayMarkers") }}: {{ markers.decay }}</li>
 		</ul>
 		<p>
 			<button @click="openDamageMenu">{{ $t("action.addDamage") }}</button>
@@ -194,83 +279,76 @@ defineExpose({
 		</p>
 	</div>
 	<dialog closedby="any" ref="damageDialog">
-		<h2>{{ $t("markers.damageMarkers") }}</h2>
 		<div class="btn-group">
-			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('damage', val)">
-				+{{ val }}
-			</button>
+			<h2>{{ $t("markers.damageMarkers") }}</h2>
+			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('damage', val)"
+				v-html="renderMarker('damage', val)"></button>
 		</div>
 
 		<template v-if="markers.damage && !markers.rush">
-			<h2>{{ $t("strings.healDamage") }}</h2>
+			<hr />
 			<div class="btn-group">
+				<h2>{{ $t("strings.healDamage") }}</h2>
 				<template v-for="val in [10, 20, 30, 40, 50]">
-					<button @click="addMarker('damage', -val)" v-if="markers.damage >= val">
-						-{{ val }}
-					</button>
+					<button v-if="markers.damage >= val" @click="addMarker('damage', -val)"
+						v-html="renderMarker('damage', val)"></button>
 				</template>
 			</div>
 		</template>
 		<button @click="damageDialog?.close()">Close</button>
 	</dialog>
 	<dialog closedby="any" ref="otherDialog">
+		<div class="button-list">
 		<button @click="addMarker('poison', 10)" v-if="canAddMarker('poison')">
-			+10 {{ $t("markers.poisonMarkers") }}
+			{{ $t("markers.poisonMarkers") }} <span v-html="renderMarker('poison', 10)"></span>
 		</button>
 		<button @click="addMarker('healing', 10)" v-if="canAddMarker('healing')">
-			+10 {{ $t("markers.healingMarkers") }}
+			{{ $t("markers.healingMarkers") }} <span v-html="renderMarker('healing', 10)"></span>
 		</button>
 		<button @click="addMarker('rush', 20)" v-if="canAddMarker('rush')">
-			+20 {{ $t("markers.rushMarkers") }}
+			{{ $t("markers.rushMarkers") }} <span v-html="renderMarker('rush', 20)"></span>
 		</button>
 		<button @click="addMarker('decay', 10)" v-if="canAddMarker('decay')">
-			+10 {{ $t("markers.decayMarkers") }}
+			{{ $t("markers.decayMarkers") }} <span v-html="renderMarker('decay', 10)"></span>
 		</button>
 		<button @click="addMarker('protection', 10)" v-if="canAddMarker('protection')">
-			+10 {{ $t("markers.protectionMarkers") }}
+			{{ $t("markers.protectionMarkers") }} <span v-html="renderMarker('protection', 10)"></span>
 		</button>
 		<button @click="addMarker('bleeding', 20)" v-if="canAddMarker('bleeding')">
-			+20 {{ $t("markers.bleedingMarkers") }}
+			{{ $t("markers.bleedingMarkers") }} <span v-html="renderMarker('bleeding', 20)"></span>
 		</button>
 		<button @click="addMarker('confusion', 1)" v-if="canAddMarker('confusion')">
-			+1 {{ $t("markers.confusionMarkers") }}
+			{{ $t("markers.confusionMarkers") }} <span v-html="renderMarker('confusion', 1)"></span>
 		</button>
 		<button @click="addMarker('blessing', 10)" v-if="canAddMarker('blessing')">
-			+10 {{ $t("markers.blessingMarkers") }}
+			{{ $t("markers.blessingMarkers") }} <span v-html="renderMarker('blessing', 10)"></span>
 		</button>
 		<button @click="addMarker('curse', 10)" v-if="canAddMarker('curse')">
-			+10 {{ $t("markers.curseMarkers") }}
+			{{ $t("markers.curseMarkers") }} <span v-html="renderMarker('curse', 10)"></span>
 		</button>
-
-		<h2>{{ $t("markers.lifeMarkers") }}</h2>
-		<div class="btn-group">
-			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('life', val)">
-				{{ val }}
-			</button>
 		</div>
 
-		<h2>{{ $t("markers.strengthMarkers") }}</h2>
 		<div class="btn-group">
-			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('strength', val)">
-				{{ val }}
-			</button>
+			<h2>{{ $t("markers.lifeMarkers") }}</h2>
+			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('life', val)" v-html="renderMarker('life', val)"></button>
+		</div>
+
+		<div class="btn-group">
+		<h2>{{ $t("markers.strengthMarkers") }}</h2>
+			<button v-for="val in [10, 20, 30, 40, 50]" @click="addMarker('strength', val)" v-html="renderMarker('strength', val)"></button>
 		</div>
 
 		<template v-if="canAddMarker('sleep')">
-			<h2>{{ $t("markers.sleepMarkers") }}</h2>
 			<div class="btn-group">
-				<button v-for="val in [1, 2, 3, 4, 5]" @click="addMarker('sleep', val)">
-					{{ val }}
-				</button>
+				<h2>{{ $t("markers.sleepMarkers") }}</h2>
+				<button v-for="val in [1, 2, 3, 4, 5]" @click="addMarker('sleep', val)"  v-html="renderMarker('sleep', val)"></button>
 			</div>
 		</template>
 
 		<template v-if="canAddMarker('counter')">
-			<h2>{{ $t("markers.counterMarkers") }}</h2>
 			<div class="btn-group">
-				<button v-for="val in [1, 2, 3, 4, 5]" @click="addMarker('counter', val)">
-					{{ val }}
-				</button>
+				<h2>{{ $t("markers.counterMarkers") }}</h2>
+				<button v-for="val in [1, 2, 3, 4, 5]" @click="addMarker('counter', val)" v-html="renderMarker('counter', val)"></button>
 			</div>
 		</template>
 
@@ -280,31 +358,67 @@ defineExpose({
 
 <style scoped>
 .hero {
+	box-sizing: border-box;
 	text-align: left;
+	padding: 16px;
+	background: #1a1a1a;
+	border-radius: 8px;
 }
 
 button {
 	display: block;
 }
 
+.marker-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.button-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	::v-deep(.marker) {
+		width: 1.5em;
+		vertical-align: middle;
+	}
+}
+
+::v-deep(.marker) {
+	width: 32px;
+}
+
 .btn-group {
 	display: flex;
 	flex-direction: row;
+
+	& h2 {
+		margin: 0;
+	}
 
 	& button {
 		flex-grow: 1;
 		flex-shrink: 1;
 		border-radius: 0;
+		padding: 4px;
 
-		&:first-child {
+		&:first-of-type {
 			border-top-left-radius: 8px;
 			border-bottom-left-radius: 8px;
 		}
-		&:last-child {
+
+		&:last-of-type {
 			border-top-right-radius: 8px;
 			border-bottom-right-radius: 8px;
 		}
 	}
+}
+
+ul {
+	list-style: none;
+	padding: 0;
 }
 </style>
 
