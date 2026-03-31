@@ -5,7 +5,7 @@ import en from "./i18n/en.json";
 
 const i18n = createI18n({
 	legacy: false,
-	locale: "en",
+	locale: "de",
 	fallbackLocale: "de",
 	messages: {
 		en,
