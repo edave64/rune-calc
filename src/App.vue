@@ -34,7 +34,7 @@ function nextTurn() {
 	max-width: 360px;
 }
 
-@media (max-width: 1008px) {
+@media (max-width: 800px) {
 	.app {
 		flex-direction: column;
 	}
