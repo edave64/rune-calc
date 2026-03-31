@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path d="M0 0h64v64H0Z" style="fill:#b55ddd;stroke-width:.999999"/>
+    <path d="M32 4.5a13.75 13.75 0 0 0-13.75 13.4A13.75 13.75 0 0 0 4.5 31.65 13.75 13.75 0 0 0 18.25 45.4v.35A13.75 13.75 0 0 0 32 59.5a13.75 13.75 0 0 0 13.75-13.75l-.01-.35h.01A13.75 13.75 0 0 0 59.5 31.65 13.75 13.75 0 0 0 45.75 17.9h-.01A13.75 13.75 0 0 0 32 4.5" style="fill:#fff;stroke-width:1.41026"/>
+    <path d="M20.2 42.93h7.76v-22L20 22.59V16.6l7.91-1.64h8.34v27.96H44v6.06H20.2Z" aria-label="1" style="font-weight:700;stroke-width:6.58522"/>
+</svg>
